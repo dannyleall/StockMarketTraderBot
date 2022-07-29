@@ -1,4 +1,4 @@
-# Stock Market Trader Bot
+# Stock Market Trader Bot (In Process)
 This repo is the contemporary status of the senior design project for my undergraduate Computer Engineering studies at Florida International University. This project is still in the making, however, this repo will updated with the progress as more intricate implementations are processed and tested. <br><br><br>
 
 # Project Description
