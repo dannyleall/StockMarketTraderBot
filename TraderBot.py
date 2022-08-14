@@ -2,6 +2,7 @@ import numpy as np
 import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
+import scipy.optimize as spo 
 
 # ---------------------------------------------- Returns Adjusted Dataframes ---------------------------------------------- #
 
@@ -114,7 +115,7 @@ def StockReturns(dfArray, dailyOrMonthly):
     if dailyOrMonthly.lower() != "daily" and dailyOrMonthly.lower() != "monthly": 
         return print("\ndailyOrMonthly Variable: Invalid\n\tMust be 'daily' or 'monthly'.\n")
 
-    if dailyOrMonthly == "daily": 
+    if dailyOrMonthly.lower() == "daily": 
         
         for df in range(len(dfArray)):
             tempDf = dfArray[df]
@@ -125,7 +126,7 @@ def StockReturns(dfArray, dailyOrMonthly):
             tempDf = tempDf.pct_change()
             returnsDf.append(tempDf.dropna())
 
-    elif dailyOrMonthly == "monthly": 
+    elif dailyOrMonthly.lower() == "monthly": 
 
         for df in range(len(dfArray)):
             tempDf = dfArray[df]
@@ -524,7 +525,7 @@ def PlotCorrelationMatrix(df):
         return print("\ndfArray Variable: Invalid\n\tdfArray content is not in dataframe format.\n")
 
     if len(df) > 1:
-        return print("\ndfArray Variable: Invalid\n\tPlease use the 'CombineDfs' method on these two dataframes first.\n")
+        return print("\ndfArray Variable: Invalid\n\tPlease use the 'CombineDfs' method on these dataframes first.\n")
 
     elif len(df) == 1:
 
@@ -572,7 +573,7 @@ def ComputePortfolioValue(startValue, startDate, endDate, symbols, allocations):
     # Validate allocations array
     if type(allocations) is int: 
         return ComputePortfolioValue(startValue, startDate, endDate, symbols, [allocations])
-
+    
     for x in range(len(allocations)):
 
         if type(allocations[x]) is not float:
@@ -586,18 +587,20 @@ def ComputePortfolioValue(startValue, startDate, endDate, symbols, allocations):
     for x in range(len(allocations)):
         sum += allocations[x]
     
-    if sum < 0.98:
+    if sum < 0.98 or sum > 1.02:
         return print("Allocations: Invalid\n\tAllocations must add to 1.0.\n")
+
+    print("Computing Portfolio Value..........")
 
     # Get prices
     prices = HistoricalData(symbols, startDate, endDate)
-    
+
     # Normalize prices
     normed = NormalizeDfs(prices)
 
     # Allocations dataframe
     alloc = [normed[x] * allocations[x] for x in range(len(normed))]
-    
+
     # Position values dataframe
     positionVal = [alloc[x] * startValue for x in range(len(alloc))]
     
@@ -607,7 +610,7 @@ def ComputePortfolioValue(startValue, startDate, endDate, symbols, allocations):
     # Sum each row to get portfolio value per day
     portfolioVal = combined.sum(axis=1)
 
-    print("\nPortfolio value successfully computed.\n")
+    print("Portfolio value successfully computed.\n")
     df = pd.DataFrame(portfolioVal, columns = ['Portfolio Value'])
     return df
 
@@ -666,7 +669,7 @@ def ComputeSharpeRatio(historicalData, k, startDate, endDate, allocations):
     return sharpe
 
 
-# Optimize Portfolio
+# Optimize Portfolio using Monte Carlo Simulation
 def OptimizePortfolio(symbols, numOfSim, startDate, endDate):
 
     # Validate symbols
@@ -737,5 +740,84 @@ def OptimizePortfolio(symbols, numOfSim, startDate, endDate):
 
     print("Portfolio Optimized!\n\nMaximum Sharpe Ratio of the", n, "Simulations: ", sharpeRatios.max(), 
             "\nMost Profitable Allocations are: ", optimizedAllocations, "\n\n")
+
+    return optimizedAllocations
+
+
+# Optimize Portoflio using Scipy function
+def ScipyOptimizePortfolio(symbols, startDate, endDate):
+
+    # Validate symbols
+    if type(symbols) is not list:
+        return print("\nsymbols Variable: Invalid\n\tsymbols variable must be of type list.\n")
+
+    else:
+        
+        for x in range(len(symbols)):
+
+            if type(symbols[x]) is not str:
+                    return print("\nsymbols Variable: Invalid\n\tsymbols variable must be of type list.\n")
+
+    # Validate timeframe
+    ValidateDates(startDate, endDate)
+
+    # Combine the dataframes
+    combined = CombineDfs(HistoricalData(symbols, startDate, endDate), startDate, endDate)
+
+    # Compute the daily log returns 
+    logReturns = np.log(combined/combined.shift(1)).dropna()
+
+    # Define the negative sharpe ratio function that will be used inside of the spo.minimize call
+    def Function(weights):
+
+        # Create a numpy array of the list of weights
+        weights = np.array(weights)
+
+        # Compute expected returns, volatility, and sharpe ratio
+        expectedReturns = np.sum(logReturns.mean() * weights) * 252
+        expectedVolatility = np.sqrt(np.dot(weights.T, np.dot(logReturns.cov() * 252, weights)))
+        sharpeRatio = expectedReturns/expectedVolatility
+
+        """ 
+        If we want to optimize a portfolio based on sharpe ratio using the minimize function, we must use the 
+        negative sharpe ratio rather than the regular sharpe ratio. By using the 'negative sharpe ratio', the function
+        will now 'maximize' rather than 'minimize'.
+
+        """
+
+        # Convert to numpy array of the metrics, then return the negative sharpe ratio
+        return np.array([expectedReturns, expectedVolatility, sharpeRatio])[2] * -1
+
+    # Create a random numpy array for the allocations
+    random = np.array(np.random.random(len(symbols)))
+
+    # Make sure the sum of allocations is 1.0 and compute expected return
+    rebalance = random / np.sum(random)
+    expectedReturn = np.sum((logReturns.mean() * rebalance) * 252)
+
+    # Constraints
+    constraints = (
+        # eq ensures our weights sums up to 1.0
+        { 'type':'eq', 'fun':lambda x: np.sum(x) - 1}, 
+        
+        # ineq ensures non-negative allocations while also aiming for our expected return to ideally be 1.5 above original stock return
+        {'type':'ineq', 'fun':lambda x: np.sum(logReturns.mean() * x) - (expectedReturn + (expectedReturn * 1.5))}
+        )
+
+    # Creates a tuple that allows for the allocations to be from 0 to 1
+    bounds = tuple((0,1) for x in range(logReturns.shape[1]))
+
+    # Create an intial even distribution guess to begin the minimization process
+    initialGuess = len(symbols) * [1/len(symbols)]
+
+    # Optimize using the function, guess, bounds, and constraint
+    optimizedResults = spo.minimize(Function, initialGuess, method="SLSQP", bounds=bounds, constraints=constraints)
+
+    # Initialize the optimized allocations array
+    optimizedAllocations = []
+
+    # Convert values from numpy.float64 to float
+    for x in range(len(optimizedResults.x)):
+        optimizedAllocations.append(float(optimizedResults.x[x]))
 
     return optimizedAllocations
