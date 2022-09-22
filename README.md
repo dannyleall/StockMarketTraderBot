@@ -1,5 +1,5 @@
 # Stock Market Trader Bot (In-Progress)
-This repo is the contemporary status of the senior design project for my undergraduate Computer Engineering studies at Florida International University. This project is still in the making, however, this repo will updated with the progress as more intricate implementations are processed and tested. The estimated date of completion is December 2022. <br><br>
+This repo is the contemporary status of the senior design project for my undergraduate Computer Engineering studies at Florida International University. This project is still in the making, however, this repo will updated with the progress as more intricate implementations are processed and tested. The estimated date of completion is December 2022. <br>
 
 For a more concise explanation of the files, please download and go through the Software Documentation.docx that summarizes all files, classes, and functions within this project.
 <br><br><br>
