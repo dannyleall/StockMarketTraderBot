@@ -97,16 +97,16 @@ Ctrl+Shift+`
   - **Purpose:** Improve project appearance and instructions.
 
    ### IbTrading.py
-  - **Description:** This file contains all functions dealing with connecting our code to a Interactive Brokers trading account and submitting buy/sell orders accordingly.
+  - **Description:** This file contains all functions dealing with connecting our code to a `Interactive Brokers` trading account and submitting buy/sell orders accordingly.
   - **Purpose:** Code that allows for buy/sell orders through the click of a button.
 
    ### Learners.py
-  - **Description:** Contains all of our algorithms including a decision tree, random tree, bootstrap aggregating learner, insane learner, Dyna-Q, Strategy Dyna-Q, and Deep-Q.
+  - **Description:** Contains all of our algorithms including a `decision tree`, `random tree`, `bootstrap aggregating learner`, `insane learner`, `Dyna-Q`, `Strategy Dyna-Q`, and `Deep-Q`.
   - **Purpose:** Incorporate machine learning and deep learning to predict the behavior of a stock.
 
    ### Output.py
   - **Description:** Ties in together all of our utility functions and algorithms together into one clean output. 
-  - **Purpose:** Convert a regression-based prediction (e.g., Stock Price will increase $25 tomorrow) to a classification output (e.g., BUY/SELL/HOLD).
+  - **Purpose:** Convert a `regression-based` prediction (e.g., Stock Price will increase $25 tomorrow) to a `classification-based` output (e.g., BUY/SELL/HOLD).
 
    ### README.md
   - **Description:** Clear instructions on how a random user can use this project. 
@@ -137,5 +137,5 @@ Ctrl+Shift+`
   - **Purpose:** Create convenient, easily callable functions that can be used throughout the project files. 
 
    ### UtilitiesTestAndExamples.py
-  - **Description:** Contains all testing for the utility functions' functionality. Also contains all of the examples in the form of a function respective to lessons 7 through 10. 
-  - **Purpose:** Ensure utility functions work as expected and grasp a better understanding of the ML4T Udacity Coursework.
+  - **Description:** Contains all testing for the utility functions' functionality. Also contains all of the examples in the form of a function respective to `lessons 7 through 10`. 
+  - **Purpose:** Ensure utility functions work as expected and grasp a better understanding of the `ML4T Udacity Coursework`.
