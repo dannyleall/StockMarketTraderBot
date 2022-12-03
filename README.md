@@ -1,11 +1,10 @@
 # Table of Contents
----
 1. [Installing Dependencies](#Introduction)
 
+<br>
 
 ## Installing Dependencies <a name="Introduction"></a>
----
-1. In order to run this program without errors, all the necessary libraries must be installed as outlined per [Requirements.txt](##Requirements.txt) file. For the easiest installation process: 
+1. In order to run this program without errors, all the necessary libraries must be installed as outlined per [Requirements.txt](https://github.com/dannyleall/StockMarketTraderBot/blob/main/Requirements.txt) file. For the easiest installation process: 
    - Open this project in [VS Code](https://code.visualstudio.com/download) and open the terminal by pressing 
 ``
 Ctrl+Shift+`
@@ -18,36 +17,32 @@ Ctrl+Shift+`
 <br>
 
 ## Running the Project
----
 1. Once all dependencies have been installed, you are ready to run the project.
-    - **Using VS Code:** Navigate to the project's [RunMe.py](##RunMe.py) file, and run the file. 
+    - **Using VS Code:** Navigate to the project's [RunMe.py]([##RunMe.py](https://github.com/dannyleall/StockMarketTraderBot/blob/main/RunMe.py)) file, and run the file. 
         
         **NOTE:** There will be a 5 to 10 minute delay after you type your stock in the first window in order to train and test the algorithms.
         <br>
 
         ### First Pop-Up Window
-        ---
         - Contains entry box for user to input stock. Once typed, and enter is selected, algorithms will begin computing.
   
-          ![image](Images/FirstWindow.png)
+          ![](Images/FirstWindow.png)
           
           <br>
 
         ### Second Pop-Up Window
-        ---
         - Here, you can select which algorithm you would like to see the prediction for.
         
             **Dark Mode**
-          ![image](Images/DarkSecondWindow.png)
+          ![](Images/DarkSecondWindow.png)
             <br>
 
             **Light Mode**
-          ![image](Images/LightSecondWindow.png)
+          ![](Images/LightSecondWindow.png)
 
           <br>
 
         ### Algorithmic Predictions Windows
-        ---
         - Lastly, you can now access all the information relevant to the learner you selected.
 
             **Dyna-Q Algorithm (Dark Mode)**
@@ -62,7 +57,6 @@ Ctrl+Shift+`
 
 ## Other Functionalities
 ### Implementing More Buttons
----
 1. The user interface has two buttons after selecting the learner: BUY and SELL. Currently, this project as is does not incorporate BUY and SELL of the stock you inputted in the fist pop-up window.
 
     - If you **do not** wish to use the BUY and SELL buttons functionality, skip to the [next section](). Otherwise, follow these instructions:
@@ -71,4 +65,4 @@ Ctrl+Shift+`
         
         **Step Two:** Create an [InteractiveBrokers account](https://gdcdyn.interactivebrokers.com/Universal/Application) and ensure a funded account.
 
-        **Step Three:** Un-comment out lines [562-564](), [568-570](), [951-953](), and [957-959]() of [UserInterface.py](##UserInterface.py).
+        **Step Three:** Un-comment out lines [562-564](https://github.com/dannyleall/StockMarketTraderBot/blob/main/UserInterface.py#L562-L564), [568-570](https://github.com/dannyleall/StockMarketTraderBot/blob/main/UserInterface.py#L568-L570), [951-953](https://github.com/dannyleall/StockMarketTraderBot/blob/main/UserInterface.py#L951-L953), and [957-959](https://github.com/dannyleall/StockMarketTraderBot/blob/main/UserInterface.py#L951-L953) of [UserInterface.py](https://github.com/dannyleall/StockMarketTraderBot/blob/main/UserInterface.py).
