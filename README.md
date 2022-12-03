@@ -6,7 +6,7 @@
     - [Second Window](#second-pop-up-window)
     - [Predictions Window](#algorithmic-predictions-windows)
   - [Other Functionalities](#other-functionalities)
-    - [Implementing More Buttons](#implementing-more-buttons)
+    - [Implementing BUY/SELL Buttons](#implementing-more-buttons)
   - [Repository File Explanations](#repository-file-explanations)
     - [Data/Istanbul.csv](#dataistanbulcsv)
     - [Images/{ImageName}.png](#imagesimagenamepng)
@@ -67,7 +67,7 @@ Ctrl+Shift+`
           <br>
 
 ## Other Functionalities
-### Implementing More Buttons
+### Implementing BUY/SELL Buttons
 1. The user interface has two buttons after selecting the learner: BUY and SELL. Currently, this project as is does not incorporate BUY and SELL of the stock you inputted in the fist pop-up window.
 
     - If you **do not** wish to use the BUY and SELL buttons functionality, ignore this section and [run the project](#running-the-project)! Otherwise, follow these instructions:
