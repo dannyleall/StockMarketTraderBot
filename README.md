@@ -1,5 +1,9 @@
 # Table of Contents
-1. [Installing Dependencies](#Introduction)
+- [Table of Contents](#table-of-contents)
+  - [Installing Dependencies ](#installing-dependencies-)
+  - [Running the Project](#running-the-project)
+  - [Other Functionalities](#other-functionalities)
+    - [Implementing More Buttons](#implementing-more-buttons)
 
 <br>
 
@@ -49,10 +53,14 @@ Ctrl+Shift+`
 ### Implementing More Buttons
 1. The user interface has two buttons after selecting the learner: BUY and SELL. Currently, this project as is does not incorporate BUY and SELL of the stock you inputted in the fist pop-up window.
 
-    - If you **do not** wish to use the BUY and SELL buttons functionality, skip to the [next section](). Otherwise, follow these instructions:
+    - If you **do not** wish to use the BUY and SELL buttons functionality, ignore this section and [run the project](#running-the-project)! Otherwise, follow these instructions:
     
         **Step One:** Install [Trader WorkStation (TWS) API](https://www.interactivebrokers.com/en/trading/tws.php#tws-software).
         
         **Step Two:** Create an [InteractiveBrokers account](https://gdcdyn.interactivebrokers.com/Universal/Application) and ensure a funded account.
 
         **Step Three:** Un-comment out lines [562-564](https://github.com/dannyleall/StockMarketTraderBot/blob/main/UserInterface.py#L562-L564), [568-570](https://github.com/dannyleall/StockMarketTraderBot/blob/main/UserInterface.py#L568-L570), [951-953](https://github.com/dannyleall/StockMarketTraderBot/blob/main/UserInterface.py#L951-L953), and [957-959](https://github.com/dannyleall/StockMarketTraderBot/blob/main/UserInterface.py#L951-L953) of [UserInterface.py](https://github.com/dannyleall/StockMarketTraderBot/blob/main/UserInterface.py).
+
+        **Step Four:** Follow short instructions on `Connecting Code to TWS` section of the [Software Documentation.docx](https://github.com/dannyleall/StockMarketTraderBot/blob/main/Software%20Documentation.docx) to ensure an established Interactive Brokers connection.
+
+        **Step Five:** [Run the project](#running-the-project)!
