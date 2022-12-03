@@ -35,25 +35,15 @@ Ctrl+Shift+`
         
             **Dark Mode**
           ![](Images/DarkSecondWindow.png)
-            <br>
-
-            **Light Mode**
-          ![](Images/LightSecondWindow.png)
 
           <br>
 
         ### Algorithmic Predictions Windows
         - Lastly, you can now access all the information relevant to the learner you selected.
-
-            **Dyna-Q Algorithm (Dark Mode)**
-          ![](Images/DarkLastWindow.png)
-            <br>
  
             **Deep-Q Algorithm (Light Mode)**
           ![](Images/LightLastWindow.png)  
-
-
-
+          <br>
 
 ## Other Functionalities
 ### Implementing More Buttons
