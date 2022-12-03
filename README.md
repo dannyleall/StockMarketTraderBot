@@ -2,6 +2,9 @@
 - [Table of Contents](#table-of-contents)
   - [Installing Dependencies ](#installing-dependencies-)
   - [Running the Project](#running-the-project)
+    - [First Window](#first-pop-up-window)
+    - [Second Window](#second-pop-up-window)
+    - [Predictions Window](#algorithmic-predictions-windows)
   - [Other Functionalities](#other-functionalities)
     - [Implementing More Buttons](#implementing-more-buttons)
 
@@ -64,3 +67,41 @@ Ctrl+Shift+`
         **Step Four:** Follow short instructions on `Connecting Code to TWS` section of the [Software Documentation.docx](https://github.com/dannyleall/StockMarketTraderBot/blob/main/Software%20Documentation.docx) to ensure an established Interactive Brokers connection.
 
         **Step Five:** [Run the project](#running-the-project)!
+
+<br>
+
+## Repository File Explanations
+### Data/Istanbul.csv
+- **Description:** This dataset includes the returns of multiple worldwide indexes for a number of days in history. 
+- **Purpose:** Utilized in [TestLearners.ipynb](https://github.com/dannyleall/StockMarketTraderBot/blob/main/TestLearners.ipynb) to assess our learners per the ML4T [university course project by Tucker Balch](https://quantsoftware.gatech.edu/Spring_2020_Project_3:_Assess_Learners).
+  - The overall objective is to predict what the return for the MSCI Emerging Markets (EM) index will be on the basis of the other index returns. Y in this case is the last column to the right, and the X values are the remaining columns to the left (except the first column which is the date).
+
+<br>
+
+### Images/{ImageName}.png
+- **Description:** This is a folder that simply contains the images for our `README.md` and [UserInterface.py](https://github.com/dannyleall/StockMarketTraderBot/blob/main/UserInterface.py) files. 
+- **Purpose:** Improve project appearance and instructions.
+
+<br>
+
+### IbTrading.py
+- **Description:** This file contains all functions dealing with connecting our code to a Interactive Brokers trading account and submitting buy/sell orders accordingly.
+- **Purpose:** Code that allows for buy/sell orders through the click of a button.
+
+<br>
+
+### Learners.py
+- **Description:** Contains all of our algorithms including a decision tree, random tree, bootstrap aggregating learner, insane learner, Dyna-Q, Strategy Dyna-Q, and Deep-Q.
+- **Purpose:** Incorporate machine learning and deep learning to predict the behavior of a stock.
+
+<br>
+
+### Output.py
+- **Description:** Ties in together all of our utility functions and algorithms together into one clean output. 
+- **Purpose:** Convert a regression-based prediction (e.g., Stock Price will increase $25 tomorrow) to a classification output (e.g., BUY/SELL/HOLD).
+
+<br>
+
+### README.md
+- **Description:** Clear instructions on how a random user can use this project. 
+- **Purpose:** Facilitate the user's experience when using this repository.
