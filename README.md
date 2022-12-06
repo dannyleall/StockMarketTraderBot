@@ -8,19 +8,6 @@
   - [Implementing BUY/SELL Buttons](#implementing-more-buttons)
   - [More Predictions Button](#more-predictions-button)
 - [Repository File Explanations](#repository-file-explanations)
-  - [Data/Istanbul.csv](#dataistanbulcsv)
-  - [Images/{ImageName}.png](#imagesimagenamepng)
-  - [IbTrading.py](#ibtradingpy)
-  - [Learners.py](#learnerspy)
-  - [Output.py](#outputpy)
-  - [README.md](#readmemd)
-  - [Requirements.txt](#requirementstxt)
-  - [RunMe.py](#runmepy)
-  - [Software Documentation.docx](#software-documentationdocx)
-  - [TestLearners.pynb](#testlearnersipynb)
-  - [UserInterface.py](#userinterfacepy)
-  - [Utilities.py](#utilitiespy)
-  - [UtilitiesTestsAndExamples](#utilitiestestandexamplespy)
 
 <br>
 
